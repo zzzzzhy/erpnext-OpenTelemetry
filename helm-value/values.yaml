@@ -96,8 +96,26 @@ worker:
     nodeSelector: {}
     tolerations: []
     affinity: {}
-    args: []
-    envVars: []
+    args:
+      - opentelemetry-instrument
+      - gunicorn
+    envVars:
+      - name: OTEL_SERVICE_NAME
+        value: erpnext
+      - name: OTEL_DEPLOYMENT_ENVIRONMENT
+        value: production
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://otel-collector.observability:4317
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: grpc
+      - name: OTEL_TRACES_EXPORTER
+        value: otlp
+      - name: OTEL_METRICS_EXPORTER
+        value: otlp
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp
+      - name: OTEL_PYTHON_LOG_CORRELATION
+        value: "true"
     initContainers: []
     sidecars: []
 
@@ -119,7 +137,23 @@ worker:
     readinessProbe:
       override: false
       probe: {}
-    envVars: []
+    envVars:
+      - name: OTEL_SERVICE_NAME
+        value: erpnext
+      - name: OTEL_DEPLOYMENT_ENVIRONMENT
+        value: production
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://otel-collector.observability:4317
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: grpc
+      - name: OTEL_TRACES_EXPORTER
+        value: otlp
+      - name: OTEL_METRICS_EXPORTER
+        value: otlp
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp
+      - name: OTEL_PYTHON_LOG_CORRELATION
+        value: "true"
     initContainers: []
     sidecars: []
 
@@ -141,7 +175,23 @@ worker:
     readinessProbe:
       override: false
       probe: {}
-    envVars: []
+    envVars:
+      - name: OTEL_SERVICE_NAME
+        value: erpnext
+      - name: OTEL_DEPLOYMENT_ENVIRONMENT
+        value: production
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://otel-collector.observability:4317
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: grpc
+      - name: OTEL_TRACES_EXPORTER
+        value: otlp
+      - name: OTEL_METRICS_EXPORTER
+        value: otlp
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp
+      - name: OTEL_PYTHON_LOG_CORRELATION
+        value: "true"
     initContainers: []
     sidecars: []
 
@@ -163,7 +213,23 @@ worker:
     readinessProbe:
       override: false
       probe: {}
-    envVars: []
+    envVars:
+      - name: OTEL_SERVICE_NAME
+        value: erpnext
+      - name: OTEL_DEPLOYMENT_ENVIRONMENT
+        value: production
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://otel-collector.observability:4317
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: grpc
+      - name: OTEL_TRACES_EXPORTER
+        value: otlp
+      - name: OTEL_METRICS_EXPORTER
+        value: otlp
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp
+      - name: OTEL_PYTHON_LOG_CORRELATION
+        value: "true"
     initContainers: []
     sidecars: []
 
@@ -179,7 +245,23 @@ worker:
     readinessProbe:
       override: false
       probe: {}
-    envVars: []
+    envVars:
+      - name: OTEL_SERVICE_NAME
+        value: erpnext
+      - name: OTEL_DEPLOYMENT_ENVIRONMENT
+        value: production
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://otel-collector.observability:4317
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: grpc
+      - name: OTEL_TRACES_EXPORTER
+        value: otlp
+      - name: OTEL_METRICS_EXPORTER
+        value: otlp
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp
+      - name: OTEL_PYTHON_LOG_CORRELATION
+        value: "true"
     initContainers: []
     sidecars: []
 
