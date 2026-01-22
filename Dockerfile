@@ -1,10 +1,10 @@
 FROM frappe/erpnext:v15
 
-USER root
-
+USER frappe
 RUN bench get-app https://github.com/Simbotix/simbotix_otel.git && \
     bench build
-
+    
+USER root
 RUN pip install \
     opentelemetry-api \
     opentelemetry-sdk \
