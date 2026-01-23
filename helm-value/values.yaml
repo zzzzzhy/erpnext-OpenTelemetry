@@ -96,15 +96,7 @@ worker:
     nodeSelector: {}
     tolerations: []
     affinity: {}
-    command:
-      - /home/frappe/frappe-bench/env/bin/opentelemetry-instrument
-    args:
-      - /home/frappe/frappe-bench/env/bin/gunicorn
-      - -b
-      - "0.0.0.0:8000"
-      - -w
-      - "4"
-      - frappe.app:application
+
     envVars:
       - name: OTEL_SERVICE_NAME
         value: erpnext-gunicorn
