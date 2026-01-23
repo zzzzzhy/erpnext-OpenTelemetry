@@ -103,7 +103,7 @@ worker:
       - -b
       - 0.0.0.0:8000
       - -w
-      - 4
+      - "4"
       - frappe.app:application
     envVars:
       - name: OTEL_SERVICE_NAME
