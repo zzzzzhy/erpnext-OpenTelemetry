@@ -27,4 +27,4 @@ CMD ["/home/frappe/frappe-bench/env/bin/opentelemetry-instrument", \
      "--worker-tmp-dir=/dev/shm", \
      "--timeout=120", \
      "--preload", \
-     "frappe.app:application"]
+     "simbotix_otel.app:application"]
