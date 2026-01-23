@@ -96,16 +96,14 @@ worker:
     nodeSelector: {}
     tolerations: []
     affinity: {}
-
+    args: ["/home/frappe/frappe-bench/env/bin/gunicorn","--chdir=/home/frappe/frappe-bench/sites","--bind=0.0.0.0:8000","--threads=4","--workers=2","--worker-class=gthread","--worker-tmp-dir=/dev/shm","--timeout=120","--preload","simbotix_otel.app:application"]
     envVars:
       - name: OTEL_SERVICE_NAME
         value: erpnext-gunicorn
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
-      - name: OTEL_EXPORTER_OTLP_PROTOCOL
-        value: grpc
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4318
       - name: OTEL_TRACES_EXPORTER
         value: otlp
       - name: OTEL_METRICS_EXPORTER
@@ -135,16 +133,14 @@ worker:
     readinessProbe:
       override: false
       probe: {}
-    args: ["/home/frappe/frappe-bench/env/bin/gunicorn","--chdir=/home/frappe/frappe-bench/sites","--bind=0.0.0.0:8000","--threads=4","--workers=2","--worker-class=gthread","--worker-tmp-dir=/dev/shm","--timeout=120","--preload","simbotix_otel.app:application"]
+    
     envVars:
       - name: OTEL_SERVICE_NAME
         value: erpnext-d
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
-      - name: OTEL_EXPORTER_OTLP_PROTOCOL
-        value: grpc
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4318
       - name: OTEL_TRACES_EXPORTER
         value: otlp
       - name: OTEL_METRICS_EXPORTER
@@ -180,9 +176,7 @@ worker:
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
-      - name: OTEL_EXPORTER_OTLP_PROTOCOL
-        value: grpc
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4318
       - name: OTEL_TRACES_EXPORTER
         value: otlp
       - name: OTEL_METRICS_EXPORTER
@@ -218,9 +212,7 @@ worker:
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
-      - name: OTEL_EXPORTER_OTLP_PROTOCOL
-        value: grpc
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4318
       - name: OTEL_TRACES_EXPORTER
         value: otlp
       - name: OTEL_METRICS_EXPORTER
@@ -250,9 +242,7 @@ worker:
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
-      - name: OTEL_EXPORTER_OTLP_PROTOCOL
-        value: grpc
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4318
       - name: OTEL_TRACES_EXPORTER
         value: otlp
       - name: OTEL_METRICS_EXPORTER
