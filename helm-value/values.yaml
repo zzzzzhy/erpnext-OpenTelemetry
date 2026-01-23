@@ -97,9 +97,9 @@ worker:
     tolerations: []
     affinity: {}
     command:
-      - opentelemetry-instrument
+      - /home/frappe/frappe-bench/env/bin/opentelemetry-instrument
     args:
-      - gunicorn
+      - /home/frappe/frappe-bench/env/bin/gunicorn
       - -b
       - "0.0.0.0:8000"
       - -w
@@ -445,6 +445,7 @@ jobs:
     adminExistingSecretKey: "password"
     installApps:
     - "erpnext"
+    - "simbotix_otel"
     dbType: "mariadb"
     backoffLimit: 0
     resources: {}
