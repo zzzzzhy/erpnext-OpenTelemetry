@@ -5,7 +5,7 @@ RUN bench get-app https://github.com/Simbotix/simbotix_otel.git && \
     bench build
     
 USER root
-RUN pip install \
+RUN /home/frappe/frappe-bench/env/bin/pip install \
     opentelemetry-api \
     opentelemetry-sdk \
     opentelemetry-exporter-otlp \
