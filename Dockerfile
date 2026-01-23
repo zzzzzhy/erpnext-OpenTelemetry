@@ -17,8 +17,7 @@ RUN /home/frappe/frappe-bench/env/bin/pip install \
     opentelemetry-instrumentation-logging
 
 USER frappe
-CMD ["/home/frappe/frappe-bench/env/bin/opentelemetry-instrument", \
-     "/home/frappe/frappe-bench/env/bin/gunicorn", \
+CMD ["/home/frappe/frappe-bench/env/bin/gunicorn", \
      "--chdir=/home/frappe/frappe-bench/sites", \
      "--bind=0.0.0.0:8000", \
      "--threads=4", \
@@ -27,4 +26,4 @@ CMD ["/home/frappe/frappe-bench/env/bin/opentelemetry-instrument", \
      "--worker-tmp-dir=/dev/shm", \
      "--timeout=120", \
      "--preload", \
-     "frappe.app:application"]
+     "simbotix_otel.app:application"]
