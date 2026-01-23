@@ -18,7 +18,7 @@ externalRedis:
 
 image:
   repository: frappe/erpnext
-  tag: v16.0.0
+  tag: v15.94.1
   pullPolicy: IfNotPresent
 
 nginx:
@@ -96,16 +96,22 @@ worker:
     nodeSelector: {}
     tolerations: []
     affinity: {}
-    args:
+    command:
       - opentelemetry-instrument
+    args:
       - gunicorn
+      - -b
+      - 0.0.0.0:8000
+      - -w
+      - 4
+      - frappe.app:application
     envVars:
       - name: OTEL_SERVICE_NAME
-        value: erpnext
+        value: erpnext-gunicorn
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector.observability:4317
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: grpc
       - name: OTEL_TRACES_EXPORTER
@@ -139,11 +145,11 @@ worker:
       probe: {}
     envVars:
       - name: OTEL_SERVICE_NAME
-        value: erpnext
+        value: erpnext-d
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector.observability:4317
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: grpc
       - name: OTEL_TRACES_EXPORTER
@@ -177,11 +183,11 @@ worker:
       probe: {}
     envVars:
       - name: OTEL_SERVICE_NAME
-        value: erpnext
+        value: erpnext-s
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector.observability:4317
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: grpc
       - name: OTEL_TRACES_EXPORTER
@@ -215,11 +221,11 @@ worker:
       probe: {}
     envVars:
       - name: OTEL_SERVICE_NAME
-        value: erpnext
+        value: erpnext-l
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector.observability:4317
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: grpc
       - name: OTEL_TRACES_EXPORTER
@@ -247,11 +253,11 @@ worker:
       probe: {}
     envVars:
       - name: OTEL_SERVICE_NAME
-        value: erpnext
+        value: erpnext-scheduler
       - name: OTEL_DEPLOYMENT_ENVIRONMENT
         value: production
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector.observability:4317
+        value: http://tracing-collector-headless.opentelemetry-operator-system.svc:4317
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: grpc
       - name: OTEL_TRACES_EXPORTER
